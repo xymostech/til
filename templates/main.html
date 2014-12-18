@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TIL</title>
+    </head>
+    <body>
+        Today I learned:
+        <form action="/post" method="POST">
+            <input type="text" name="post" placeholder="how to eat frogs" />
+        </form>
+        <a href="/logout">Logout</a> <br>
+        {% if empty %}
+            <span>No Posts</span>
+        {% else %}
+            <span>Posts:</span> <br>
+            {% for post in posts %}
+                <span>On {{ post.time }} I learned {{ post.post }}</span> <br>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>
