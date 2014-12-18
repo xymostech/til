@@ -2,7 +2,7 @@
 
 set -e
 
-rm db.sqlite
+rm -f db.sqlite
 
 sqlite3 db.sqlite "CREATE TABLE users (
     userid INTEGER PRIMARY KEY,
