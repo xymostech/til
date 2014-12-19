@@ -11,9 +11,11 @@ def main():
         return redirect(url_for('login'))
 
     the_posts = posts.get_posts(get_logged_in_user())
+    date_posts = posts.group_posts_by_date(the_posts)
 
     context = {
-        'posts': the_posts,
+        'dates': sorted(date_posts.keys(), reverse=True),
+        'date_posts': date_posts,
         'empty': len(the_posts) == 0
     }
 

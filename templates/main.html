@@ -13,8 +13,11 @@
             <span>No Posts</span>
         {% else %}
             <span>Posts:</span> <br>
-            {% for post in posts %}
-                <span>On {{ post.time }} I learned {{ post.post }}</span> <br>
+            {% for date in dates %}
+                <span>On {{ date }}</span>: <br>
+                {% for post in date_posts[date] %}
+                    <span>I learned {{ post.post }} (at {{ post.timestr }})</span> <br>
+                {% endfor %}
             {% endfor %}
         {% endif %}
     </body>
