@@ -7,12 +7,12 @@ class Post:
     def __init__(self, row):
         self.postid = row['postid']
         self.post = row['post']
-        self.time = datetime.datetime.fromtimestamp(row['time'])
+        self.time = datetime.datetime.utcfromtimestamp(row['time'])
         self.day = self.time.date()
 
     @property
     def timestr(self):
-        return self.time.strftime("%I:%M %p")
+        return self.time.isoformat()
 
 def add_post(post, userid):
     with db.get_db() as the_db:

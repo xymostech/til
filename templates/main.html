@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>TIL</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/main.css" />
         <meta name="viewport" content="width=device-width">
     </head>
@@ -25,9 +26,12 @@
             {% for date in dates %}
                 <span>On {{ date }}</span> I learned... <br>
                 {% for post in date_posts[date] %}
-                    <span>... {{ post.post }} (at {{ post.timestr }})</span> <br>
+                    <span>... {{ post.post }}
+                        (at <span class="time">{{ post.timestr }}</span>)
+                    </span> <br>
                 {% endfor %}
             {% endfor %}
         {% endif %}
+        <script src="/static/main.js"></script>
     </body>
 </html>
