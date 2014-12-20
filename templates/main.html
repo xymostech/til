@@ -23,9 +23,9 @@
         {% else %}
             <span>Posts:</span> <br>
             {% for date in dates %}
-                <span>On {{ date }}</span>: <br>
+                <span>On {{ date }}</span> I learned... <br>
                 {% for post in date_posts[date] %}
-                    <span>I learned {{ post.post }} (at {{ post.timestr }})</span> <br>
+                    <span>... {{ post.post }} (at {{ post.timestr }})</span> <br>
                 {% endfor %}
             {% endfor %}
         {% endif %}

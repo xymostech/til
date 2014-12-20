@@ -18,7 +18,6 @@ def add_post(post, userid):
     with db.get_db() as the_db:
         cursor = the_db.cursor()
         cursor.execute("INSERT INTO posts VALUES (NULL, strftime('%s', 'now'), ?, ?)", (post, userid))
-        the_db.commit()
 
 def group_posts_by_date(posts):
     dates = {}
