@@ -73,4 +73,4 @@ app.teardown_appcontext(db.cleanup_db)
 app.secret_key = "boo"
 
 if __name__ == "__main__":
-    app.run(port=8739, debug=True)
+    app.run(host="::", port=8739, debug=True)
