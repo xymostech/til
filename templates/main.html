@@ -2,13 +2,22 @@
 <html>
     <head>
         <title>TIL</title>
+        <link rel="stylesheet" type="text/css" href="/static/main.css" />
+        <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        Today I learned:
-        <form action="/post" method="POST">
-            <input type="text" name="post" placeholder="how to eat frogs" />
-        </form>
-        <a href="/logout">Logout</a> <br>
+        <div class="header">
+            <div class="til">
+                <span class="til-title">Today I learned:</span>
+                <form class="new-post" action="/post" method="POST">
+                    <input type="text"
+                           name="post"
+                           autocapitalize="off"
+                           placeholder="how to..." />
+                </form>
+            </div>
+            <a class="logout" href="/logout">Logout</a> <br>
+        </div>
         {% if empty %}
             <span>No Posts</span>
         {% else %}

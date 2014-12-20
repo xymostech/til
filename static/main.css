@@ -1,0 +1,35 @@
+.header {
+    overflow: hidden;
+}
+
+.header .til {
+    font-size: 20px;
+    float: left;
+    width: 70%;
+}
+
+.new-post {
+    display: inline-block;
+}
+
+.new-post input {
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 0;
+    font-size: 20px;
+}
+
+.logout {
+    display: block;
+}
+
+@media (min-device-width: 600px) {
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .logout {
+        float: right;
+    }
+}
