@@ -1,19 +1,25 @@
 import sqlite3
 import db
+import bcrypt
 
 def add_user(username, password):
     with db.get_db() as the_db:
         cursor = the_db.cursor()
-        cursor.execute("INSERT INTO users VALUES (NULL, ?, ?)", (username, password))
-        the_db.commit()
+        res = cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+        if res.fetchone() is None:
+            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            cursor.execute("INSERT INTO users VALUES (NULL, ?, ?)", (username, hashed))
+            return True
+        else:
+            return False
 
 def check_login(username, password):
     cursor = db.get_db().cursor()
     cursor.execute("SELECT * FROM users WHERE username=?", (username,))
     user = cursor.fetchone()
     if user:
-        real_password = user["password"]
-        return real_password == password
+        hashed = user["password"].encode('utf-8')
+        return bcrypt.hashpw(password.encode('utf-8'), hashed) == hashed
     else:
         return False
 

@@ -40,9 +40,18 @@ def login():
             do_login(request.form['username'])
             return redirect(url_for('main'))
         else:
-            return render_template("login.html", error=True)
+            return render_template("login.html",
+                                   login_error="Invalid username or password")
     else:
         return render_template("login.html")
+
+@app.route('/register', methods=['POST'])
+def register():
+    if users.add_user(request.form['username'], request.form['password']):
+        return redirect(url_for('login'))
+    else:
+        return render_template("login.html",
+                               register_error="Couldn't register that username")
 
 @app.route('/post', methods=['POST'])
 def post():

@@ -4,13 +4,21 @@
         <title>Login | TIL</title>
     </head>
     <body>
-        {% if error %}
-            <span>Error logging in</span>
+        {% if login_error %}
+            <span>{{ login_error }}</span>
         {% endif %}
         <form action="/login" method="POST">
             <label>Username: <input type="text" name="username" /></label> <br>
             <label>Password: <input type="password" name="password" /></label> <br>
-            <input type="submit" value="login" />
+            <input type="submit" value="Login" />
+        </form> <br>
+        {% if register_error %}
+            <span>{{ register_error }}</span>
+        {% endif %}
+        <form action="/register" method="POST">
+            <label>Username: <input type="text" name="username" /></label> <br>
+            <label>Password: <input type="password" name="password" /></label> <br>
+            <input type="submit" value="Register" />
         </form>
     </body>
 </html>
